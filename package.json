@@ -1,20 +1,20 @@
 {
-  "name": "@technote-space/gh-actions-template",
-  "version": "0.0.8",
-  "description": "Template for GitHub actions.",
+  "name": "@technote-space/create-project-card-action",
+  "version": "0.0.1",
+  "description": "GitHub actions to create project card.",
   "author": "Technote <technote.space@gmail.com> (https://technote.space)",
   "license": "MIT",
   "keywords": [
     "github",
     "github actions"
   ],
-  "homepage": "https://github.com/technote-space/gh-actions-template",
+  "homepage": "https://github.com/technote-space/create-project-card-action",
   "repository": {
     "type": "git",
-    "url": "https://github.com/technote-space/gh-actions-template.git"
+    "url": "https://github.com/technote-space/create-project-card-action.git"
   },
   "bugs": {
-    "url": "https://github.com/technote-space/gh-actions-template/issues"
+    "url": "https://github.com/technote-space/create-project-card-action/issues"
   },
   "main": "lib/main.js",
   "dependencies": {

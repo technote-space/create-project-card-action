@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Assign PullRequest to Project
-        uses: alex-page/github-project-automation-plus@v0.0.3
+        uses: technote-space/create-project-card-action@gh-actions
         with:
           project: Backlog
           column: To do
