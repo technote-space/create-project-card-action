@@ -1,6 +1,5 @@
 export const TARGET_EVENTS = {
-	'pull_request': [
-		'opened',
-		'rerequested',
-	],
+	'issues': ['opened', 'assigned'],
+	'pull_request': ['opened', 'assigned'],
 };
+export const SLEEP         = 800;
