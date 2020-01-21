@@ -11,9 +11,9 @@ GitHub actions to create project card.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Setup](#setup)
-  - [yarn](#yarn)
-  - [npm](#npm)
+- [Usage](#usage)
+- [Action event details](#action-event-details)
+  - [Target events](#target-events)
 - [Author](#author)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
