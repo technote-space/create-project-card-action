@@ -33,8 +33,8 @@ jobs:
       - name: Assign issues to project
         uses: technote-space/create-project-card-action@v1
         with:
-          project: Backlog
-          column: To do
+          PROJECT: Backlog
+          COLUMN: To do
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
@@ -56,6 +56,25 @@ jobs:
           COLUMN: To do
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+## Options
+### PROJECT
+Project name.  
+
+### COLUMN
+Column name.  
+
+### CHECK_ORG_PROJECT
+Whether to check org project.  
+If use this option, full access permission for admin is required.  
+Use personal access token instead of `secrets.GITHUB_TOKEN`.  
+default: `false`
+
+### CHECK_USER_PROJECT
+Whether to check user project.  
+If use this option, full access permission for repo is required.  
+Use personal access token instead of `secrets.GITHUB_TOKEN`.  
+default: `false`
 
 ## Action event details
 ### Target events
