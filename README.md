@@ -12,6 +12,11 @@ GitHub actions to create project card.
 **Table of Contents**
 
 - [Usage](#usage)
+- [Options](#options)
+  - [PROJECT](#project)
+  - [COLUMN](#column)
+  - [CHECK_ORG_PROJECT](#check_org_project)
+  - [CHECK_USER_PROJECT](#check_user_project)
 - [Action event details](#action-event-details)
   - [Target events](#target-events)
 - [Author](#author)
