@@ -12,7 +12,6 @@ jobs:
         with:
           PROJECT: Backlog
           COLUMN: To do
-          CHECK_USER_PROJECT: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   assignAuthor:
