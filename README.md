@@ -85,8 +85,8 @@ default: `false`
 ### Target events
 | eventName | action |
 |:---:|:---:|
-|pull_request|opened|
-|issues|opened|
+|pull_request|opened, reopened|
+|issues|opened, reopened|
 
 ## Author
 [GitHub (Technote)](https://github.com/technote-space)  
