@@ -16,10 +16,10 @@ inputs:
     description: Column name.
     required: true
   CHECK_ORG_PROJECT:
-    description: Whether to check org project
+    description: Whether to check org project.
     required: false
   CHECK_USER_PROJECT:
-    description: Whether to check org project
+    description: Whether to check org project.
     required: false
 
 branding:
