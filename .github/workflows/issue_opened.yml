@@ -10,15 +10,16 @@ jobs:
       - name: Assign issues to project
         uses: technote-space/create-project-card-action@gh-actions
         with:
-          project: Backlog
-          column: To do
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          PROJECT: Backlog
+          COLUMN: To do
+          CHECK_USER_PROJECT: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   assignAuthor:
     name: Assign author to issue
     runs-on: ubuntu-latest
     steps:
       - name: Assign author to issue
-        uses: technote-space/assign-author@v1
+        uses: technote-space/assign-author@test/v1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
