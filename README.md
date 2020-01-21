@@ -11,18 +11,82 @@ GitHub actions to create project card.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [Setup](#setup)
-  - [yarn](#yarn)
-  - [npm](#npm)
+- [Usage](#usage)
+- [Options](#options)
+  - [PROJECT](#project)
+  - [COLUMN](#column)
+  - [CHECK_ORG_PROJECT](#check_org_project)
+  - [CHECK_USER_PROJECT](#check_user_project)
+- [Action event details](#action-event-details)
+  - [Target events](#target-events)
 - [Author](#author)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Setup
-### yarn
-- `yarn setup`
-### npm
-- `npm run setup`
+## Usage
+e.g. issue_opened.yml
+```yaml
+on:
+  issues:
+    types: [opened]
+name: Issue opened
+jobs:
+  assign:
+    name: Assign issues to project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign issues to project
+        uses: technote-space/create-project-card-action@v1
+        with:
+          PROJECT: Backlog
+          COLUMN: To do
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+e.g. pr_opened.yml
+```yaml
+on:
+  pull_request:
+    types: [opened]
+name: Pull Request opened
+jobs:
+  assignToProject:
+    name: Assign PullRequest to Project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign PullRequest to Project
+        uses: technote-space/create-project-card-action@v1
+        with:
+          PROJECT: Backlog
+          COLUMN: To do
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+## Options
+### PROJECT
+Project name.  
+
+### COLUMN
+Column name.  
+
+### CHECK_ORG_PROJECT
+Whether to check org project.  
+If use this option, full access permission for admin is required.  
+Use personal access token instead of `secrets.GITHUB_TOKEN`.  
+default: `false`
+
+### CHECK_USER_PROJECT
+Whether to check user project.  
+If use this option, full access permission for repo is required.  
+Use personal access token instead of `secrets.GITHUB_TOKEN`.  
+default: `false`
+
+## Action event details
+### Target events
+| eventName | action |
+|:---:|:---:|
+|pull_request|opened|
+|issues|opened|
 
 ## Author
 [GitHub (Technote)](https://github.com/technote-space)  
