@@ -9,7 +9,7 @@ import { getRepoProject, getOrgProject, getUserProject, getProjectIds } from '..
 
 const fixturesDir = path.resolve(__dirname, '../fixtures');
 const logger      = new Logger();
-const octokit     = new GitHub('');
+const octokit     = new GitHub('test-token');
 const getContext  = (payload = {}): Context => generateContext({
 	event: 'pull_request',
 	action: 'opened',
