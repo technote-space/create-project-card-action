@@ -6,7 +6,7 @@ import { Logger } from '@technote-space/github-action-helper';
 import { createCards } from '../../src/utils/card';
 
 const logger  = new Logger();
-const octokit = new GitHub('');
+const octokit = new GitHub('test-token');
 
 describe('createCards', () => {
 	disableNetConnect(nock);

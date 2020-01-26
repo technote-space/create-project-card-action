@@ -10,7 +10,7 @@ import { execute } from '../src/process';
 const rootDir     = path.resolve(__dirname, '..');
 const fixturesDir = path.resolve(__dirname, 'fixtures');
 const logger      = new Logger();
-const octokit     = new GitHub('');
+const octokit     = new GitHub('test-token');
 const getContext  = (payload = {}): Context => generateContext({
 	event: 'pull_request',
 	action: 'opened',
