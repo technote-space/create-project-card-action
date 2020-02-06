@@ -5,11 +5,16 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/technote-space/create-project-card-action/badge)](https://www.codefactor.io/repository/github/technote-space/create-project-card-action)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/technote-space/create-project-card-action/blob/master/LICENSE)
 
+*Read this in other languages: [English](README.md), [日本語](README.ja.md).*
+
 GitHub actions to create project card.
+
+## Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
+<details>
+<summary>Details</summary>
 
 - [Usage](#usage)
 - [Options](#options)
@@ -19,8 +24,10 @@ GitHub actions to create project card.
   - [CHECK_USER_PROJECT](#check_user_project)
 - [Action event details](#action-event-details)
   - [Target events](#target-events)
+- [Sample GitHub Actions using this Action](#sample-github-actions-using-this-action)
 - [Author](#author)
 
+</details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Usage
@@ -71,13 +78,13 @@ Column name.
 
 ### CHECK_ORG_PROJECT
 Whether to check org project.  
-If use this option, full access permission for admin is required.  
+If use this option, full access permission for `admin` is required.  
 Use personal access token instead of `secrets.GITHUB_TOKEN`.  
 default: `false`
 
 ### CHECK_USER_PROJECT
 Whether to check user project.  
-If use this option, full access permission for repo is required.  
+If use this option, full access permission for `repo` is required.  
 Use personal access token instead of `secrets.GITHUB_TOKEN`.  
 default: `false`
 
@@ -87,6 +94,24 @@ default: `false`
 |:---:|:---:|
 |pull_request|opened, reopened|
 |issues|opened, reopened|
+
+## Sample GitHub Actions using this Action
+- [Release GitHub Actions](https://github.com/technote-space/release-github-actions)
+  - [pr_opened.yml](https://github.com/technote-space/release-github-actions/blob/master/.github/workflows/pr_opened.yml)
+- [Auto card labeler](https://github.com/technote-space/auto-card-labeler)
+  - [pr_opened.yml](https://github.com/technote-space/auto-card-labeler/blob/master/.github/workflows/pr_opened.yml)
+- [Assign Author](https://github.com/technote-space/assign-author)
+  - [pr_opened.yml](https://github.com/technote-space/assign-author/blob/master/.github/workflows/pr_opened.yml)
+- [TOC Generator](https://github.com/technote-space/toc-generator)
+  - [pr_opened.yml](https://github.com/technote-space/toc-generator/blob/master/.github/workflows/pr_opened.yml)
+- [Package Version Check Action](https://github.com/technote-space/package-version-check-action)
+  - [pr_opened.yml](https://github.com/technote-space/package-version-check-action/blob/master/.github/workflows/pr_opened.yml)
+- [Get Diff Action](https://github.com/technote-space/get-diff-action)
+  - [pr_opened.yml](https://github.com/technote-space/get-diff-action/blob/master/.github/workflows/pr_opened.yml)
+- [Create Project Card Action](https://github.com/technote-space/create-project-card-action)
+  - [pr_opened.yml](https://github.com/technote-space/create-project-card-action/blob/master/.github/workflows/pr_opened.yml)
+- [Get git comment action](https://github.com/technote-space/get-git-comment-action)
+  - [pr_opened.yml](https://github.com/technote-space/get-git-comment-action/blob/master/.github/workflows/pr_opened.yml)
 
 ## Author
 [GitHub (Technote)](https://github.com/technote-space)  
