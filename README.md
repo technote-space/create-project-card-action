@@ -9,7 +9,8 @@ GitHub actions to create project card.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
+<details>
+<summary>Details</summary>
 
 - [Usage](#usage)
 - [Options](#options)
@@ -21,6 +22,7 @@ GitHub actions to create project card.
   - [Target events](#target-events)
 - [Author](#author)
 
+</details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Usage
