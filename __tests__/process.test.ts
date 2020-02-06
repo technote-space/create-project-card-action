@@ -2,15 +2,14 @@
 import nock from 'nock';
 import path from 'path';
 import { Context } from '@actions/github/lib/context';
-import { GitHub } from '@actions/github' ;
-import { testEnv, disableNetConnect, getApiFixture, generateContext } from '@technote-space/github-action-test-helper';
+import { testEnv, disableNetConnect, getApiFixture, generateContext, getOctokit } from '@technote-space/github-action-test-helper';
 import { Logger } from '@technote-space/github-action-helper';
 import { execute } from '../src/process';
 
 const rootDir     = path.resolve(__dirname, '..');
 const fixturesDir = path.resolve(__dirname, 'fixtures');
 const logger      = new Logger();
-const octokit     = new GitHub('test-token');
+const octokit     = getOctokit();
 const getContext  = (payload = {}): Context => generateContext({
 	event: 'pull_request',
 	action: 'opened',
