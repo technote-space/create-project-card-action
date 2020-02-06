@@ -7,7 +7,7 @@
 
 *Read this in other languages: [English](README.md), [日本語](README.ja.md).*
 
-GitHub actions to create project card.
+Project card を作成する `GitHub Actions` です。
 
 ## Table of Contents
 
@@ -16,21 +16,21 @@ GitHub actions to create project card.
 <details>
 <summary>Details</summary>
 
-- [Usage](#usage)
-- [Options](#options)
+- [使用方法](#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
+- [オプション](#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3)
   - [PROJECT](#project)
   - [COLUMN](#column)
   - [CHECK_ORG_PROJECT](#check_org_project)
   - [CHECK_USER_PROJECT](#check_user_project)
-- [Action event details](#action-event-details)
-  - [Target events](#target-events)
-- [Sample GitHub Actions using this Action](#sample-github-actions-using-this-action)
+- [Action イベント詳細](#action-%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E8%A9%B3%E7%B4%B0)
+  - [対象イベント](#%E5%AF%BE%E8%B1%A1%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88)
+- [このアクションを使用しているアクションの例](#%E3%81%93%E3%81%AE%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A2%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E4%BE%8B)
 - [Author](#author)
 
 </details>
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Usage
+## 使用方法
 e.g. issue_opened.yml
 ```yaml
 on:
@@ -69,33 +69,33 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-## Options
+## オプション
 ### PROJECT
-Project name.  
+プロジェクト名  
 
 ### COLUMN
-Column name.  
+カラム名  
 
 ### CHECK_ORG_PROJECT
-Whether to check org project.  
-If use this option, full access permission for `admin` is required.  
-Use personal access token instead of `secrets.GITHUB_TOKEN`.  
+Organizationプロジェクトをチェックするかどうか  
+このオプションを使用する場合、`admin` へのアクセス許可が必要です。  
+`secrets.GITHUB_TOKEN` の代わりに Personal access token を使用してください。  
 default: `false`
 
 ### CHECK_USER_PROJECT
-Whether to check user project.  
-If use this option, full access permission for `repo` is required.  
-Use personal access token instead of `secrets.GITHUB_TOKEN`.  
+Userプロジェクトをチェックするかどうか  
+このオプションを使用する場合、`repo` へのアクセス許可が必要です。  
+`secrets.GITHUB_TOKEN` の代わりに Personal access token を使用してください。  
 default: `false`
 
-## Action event details
-### Target events
+## Action イベント詳細
+### 対象イベント
 | eventName | action |
 |:---:|:---:|
 |pull_request|opened, reopened|
 |issues|opened, reopened|
 
-## Sample GitHub Actions using this Action
+## このアクションを使用しているアクションの例
 - [Release GitHub Actions](https://github.com/technote-space/release-github-actions)
   - [pr_opened.yml](https://github.com/technote-space/release-github-actions/blob/master/.github/workflows/pr_opened.yml)
 - [Auto card labeler](https://github.com/technote-space/auto-card-labeler)

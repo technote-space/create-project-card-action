@@ -1,5 +1,5 @@
-import { GitHub } from '@actions/github';
 import { Context } from '@actions/github/lib/context';
+import { Octokit } from '@octokit/rest';
 import { Logger } from '@technote-space/github-action-helper';
 import { getProjectName, getColumnName } from './utils/misc';
 import { getProjectIds } from './utils/project';
@@ -7,7 +7,7 @@ import { getColumnIds } from './utils/column';
 import { getContentId, getContentType } from './utils/context';
 import { createCards } from './utils/card';
 
-export const execute = async(logger: Logger, octokit: GitHub, context: Context): Promise<boolean> => {
+export const execute = async(logger: Logger, octokit: Octokit, context: Context): Promise<boolean> => {
 	const projectName = getProjectName();
 	const columnName  = getColumnName();
 	logger.startProcess('project: %s, column: %s', projectName, columnName);

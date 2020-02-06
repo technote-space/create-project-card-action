@@ -1,8 +1,8 @@
-import { GitHub } from '@actions/github/lib/github';
+import { Octokit } from '@octokit/rest';
 import { Utils, Logger } from '@technote-space/github-action-helper';
 import { SLEEP } from '../constant';
 
-const createCard = async(columnId: number, contentId: number, contentType: string, logger: Logger, octokit: GitHub): Promise<boolean> => {
+const createCard = async(columnId: number, contentId: number, contentType: string, logger: Logger, octokit: Octokit): Promise<boolean> => {
 	try {
 		await octokit.projects.createCard({
 			'column_id': columnId,
@@ -19,7 +19,7 @@ const createCard = async(columnId: number, contentId: number, contentType: strin
 	return true;
 };
 
-export const createCards = async(columnIds: Array<number>, contentId: number, contentType: string, logger: Logger, octokit: GitHub): Promise<{ total: number; succeeded: number; failed: number }> => {
+export const createCards = async(columnIds: Array<number>, contentId: number, contentType: string, logger: Logger, octokit: Octokit): Promise<{ total: number; succeeded: number; failed: number }> => {
 	const results: Array<boolean> = [];
 	for (const columnId of columnIds) {
 		results.push(await createCard(columnId, contentId, contentType, logger, octokit));
