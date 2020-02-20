@@ -1,4 +1,3 @@
-# https://help.github.com/ja/articles/metadata-syntax-for-github-actions
 name: Create Project Card Action
 
 description: GitHub actions to create project card.
@@ -23,7 +22,6 @@ inputs:
     required: false
 
 branding:
-  # https://feathericons.com/
   icon: 'file-plus'
   color: 'green'
 
