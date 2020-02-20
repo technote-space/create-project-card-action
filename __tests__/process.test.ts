@@ -34,11 +34,9 @@ describe('execute', () => {
 		process.env.INPUT_COLUMN  = 'To do';
 		nock('https://api.github.com')
 			.persist()
-			.get('/repos/hello/world/projects?state=open&page=1')
+			.get('/repos/hello/world/projects?state=open')
 			.reply(200, getApiFixture(fixturesDir, 'repos.projects'))
-			.get('/repos/hello/world/projects?state=open&page=2')
-			.reply(200, () => [])
-			.get('/projects/234/columns?page=1')
+			.get('/projects/234/columns')
 			.reply(200, () => []);
 
 		expect(await execute(logger, octokit, getContext({
@@ -51,14 +49,10 @@ describe('execute', () => {
 		process.env.INPUT_COLUMN  = 'To do';
 		nock('https://api.github.com')
 			.persist()
-			.get('/repos/hello/world/projects?state=open&page=1')
+			.get('/repos/hello/world/projects?state=open')
 			.reply(200, getApiFixture(fixturesDir, 'repos.projects'))
-			.get('/repos/hello/world/projects?state=open&page=2')
-			.reply(200, () => [])
-			.get('/projects/234/columns?page=1')
+			.get('/projects/234/columns')
 			.reply(200, getApiFixture(fixturesDir, 'repos.columns'))
-			.get('/projects/234/columns?page=2')
-			.reply(200, () => [])
 			.post('/projects/columns/456/cards')
 			.reply(201);
 

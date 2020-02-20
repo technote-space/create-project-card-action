@@ -21,20 +21,32 @@ const getContext  = (payload = {}): Context => generateContext({
 describe('getRepoProject', () => {
 	disableNetConnect(nock);
 
-	it('should return undefined', async() => {
+	it('should return undefined 1', async() => {
 		expect(await getRepoProject('Backlog', logger, octokit, getContext())).toBeUndefined();
+	});
+
+	it('should return undefined 2', async() => {
 		expect(await getRepoProject('Backlog', logger, octokit, getContext({
 			repository: {'has_projects': false},
+		}))).toBeUndefined();
+	});
+
+	it('should return undefined 3', async() => {
+		nock('https://api.github.com')
+			.persist()
+			.get('/repos/hello/world/projects?state=open')
+			.reply(200, getApiFixture(fixturesDir, 'repos.projects'));
+
+		expect(await getRepoProject('abc', logger, octokit, getContext({
+			repository: {'has_projects': true},
 		}))).toBeUndefined();
 	});
 
 	it('should return repo project', async() => {
 		nock('https://api.github.com')
 			.persist()
-			.get('/repos/hello/world/projects?state=open&page=1')
-			.reply(200, getApiFixture(fixturesDir, 'repos.projects'))
-			.get('/repos/hello/world/projects?state=open&page=2')
-			.reply(200, () => []);
+			.get('/repos/hello/world/projects?state=open')
+			.reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
 		expect(await getRepoProject('Backlog', logger, octokit, getContext({
 			repository: {'has_projects': true},
@@ -55,14 +67,24 @@ describe('getOrgProject', () => {
 		expect(await getOrgProject('Backlog', logger, octokit, getContext())).toBeUndefined();
 	});
 
+	it('should return undefined 3', async() => {
+		process.env.INPUT_CHECK_ORG_PROJECT = 'true';
+		nock('https://api.github.com')
+			.persist()
+			.get('/orgs/hello/projects?state=open')
+			.reply(200, getApiFixture(fixturesDir, 'repos.projects'));
+
+		expect(await getOrgProject('abc', logger, octokit, getContext({
+			organization: {},
+		}))).toBeUndefined();
+	});
+
 	it('should return org project', async() => {
 		process.env.INPUT_CHECK_ORG_PROJECT = 'true';
 		nock('https://api.github.com')
 			.persist()
-			.get('/orgs/hello/projects?state=open&page=1')
-			.reply(200, getApiFixture(fixturesDir, 'repos.projects'))
-			.get('/orgs/hello/projects?state=open&page=2')
-			.reply(200, () => []);
+			.get('/orgs/hello/projects?state=open')
+			.reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
 		expect(await getOrgProject('Backlog', logger, octokit, getContext({
 			organization: {},
@@ -85,14 +107,22 @@ describe('getUserProject', () => {
 		}))).toBeUndefined();
 	});
 
+	it('should return undefined 3', async() => {
+		process.env.INPUT_CHECK_USER_PROJECT = 'true';
+		nock('https://api.github.com')
+			.persist()
+			.get('/users/hello/projects?state=open')
+			.reply(200, getApiFixture(fixturesDir, 'repos.projects'));
+
+		expect(await getUserProject('abc', logger, octokit, getContext())).toBeUndefined();
+	});
+
 	it('should return user project', async() => {
 		process.env.INPUT_CHECK_USER_PROJECT = 'true';
 		nock('https://api.github.com')
 			.persist()
-			.get('/users/hello/projects?state=open&page=1')
-			.reply(200, getApiFixture(fixturesDir, 'repos.projects'))
-			.get('/users/hello/projects?state=open&page=2')
-			.reply(200, () => []);
+			.get('/users/hello/projects?state=open')
+			.reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
 		expect(await getUserProject('Backlog', logger, octokit, getContext())).toBe(234);
 	});
@@ -106,10 +136,8 @@ describe('getProjectIds', () => {
 		process.env.INPUT_CHECK_ORG_PROJECT = 'true';
 		nock('https://api.github.com')
 			.persist()
-			.get('/orgs/hello/projects?state=open&page=1')
-			.reply(200, getApiFixture(fixturesDir, 'repos.projects'))
-			.get('/orgs/hello/projects?state=open&page=2')
-			.reply(200, () => []);
+			.get('/orgs/hello/projects?state=open')
+			.reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
 		expect(await getProjectIds('Backlog', logger, octokit, getContext({
 			organization: {},
