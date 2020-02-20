@@ -15,13 +15,11 @@ describe('getColumnIds', () => {
 	it('should get column ids', async() => {
 		nock('https://api.github.com')
 			.persist()
-			.get('/projects/1/columns?page=1')
+			.get('/projects/1/columns')
 			.reply(200, getApiFixture(fixturesDir, 'repos.columns'))
-			.get('/projects/1/columns?page=2')
+			.get('/projects/2/columns')
 			.reply(200, () => [])
-			.get('/projects/2/columns?page=1')
-			.reply(200, () => [])
-			.get('/projects/3/columns?page=1')
+			.get('/projects/3/columns')
 			.reply(200, () => []);
 
 		expect(await getColumnIds([1, 2, 3], 'To do', logger, octokit)).toEqual([456]);
