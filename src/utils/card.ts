@@ -10,7 +10,7 @@ const createCard = async(columnId: number, contentId: number, contentType: strin
 			'content_type': contentType,
 		});
 	} catch (error) {
-		logger.error(error.message);
+		logger.warn(error.message);
 		return false;
 	} finally {
 		await Utils.sleep(SLEEP);
