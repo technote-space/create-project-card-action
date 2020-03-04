@@ -47,7 +47,6 @@ jobs:
         with:
           PROJECT: Backlog
           COLUMN: To do
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 e.g. pr_opened.yml
@@ -66,7 +65,6 @@ jobs:
         with:
           PROJECT: Backlog
           COLUMN: To do
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Options
