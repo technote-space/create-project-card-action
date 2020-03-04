@@ -18,13 +18,9 @@ GitHub actions to create project card.
 
 - [Usage](#usage)
 - [Options](#options)
-  - [PROJECT](#project)
-  - [COLUMN](#column)
-  - [CHECK_ORG_PROJECT](#check_org_project)
-  - [CHECK_USER_PROJECT](#check_user_project)
 - [Action event details](#action-event-details)
   - [Target events](#target-events)
-- [Sample GitHub Actions using this Action](#sample-github-actions-using-this-action)
+- [Example repositories using this Action](#example-repositories-using-this-action)
 - [Author](#author)
 
 </details>
@@ -68,23 +64,13 @@ jobs:
 ```
 
 ## Options
-### PROJECT
-Project name.  
-
-### COLUMN
-Column name.  
-
-### CHECK_ORG_PROJECT
-Whether to check org project.  
-If use this option, full access permission for `admin` is required.  
-Use personal access token instead of `secrets.GITHUB_TOKEN`.  
-default: `false`
-
-### CHECK_USER_PROJECT
-Whether to check user project.  
-If use this option, full access permission for `repo` is required.  
-Use personal access token instead of `secrets.GITHUB_TOKEN`.  
-default: `false`
+| name | description | default | required | e.g. |
+|:---:|:---|:---:|:---:|:---:|
+|PROJECT|Project name| |true|`Backlog`|
+|COLUMN|Column name| |true|`To do`|
+|CHECK_ORG_PROJECT|Whether to check org project.<br>If use this option, full access permission for `admin` is required.<br>Use personal access token instead of `secrets.GITHUB_TOKEN`.|false| |`true`|
+|CHECK_USER_PROJECT|Whether to check user project.<br>If use this option, full access permission for `repo` is required.<br>Use personal access token instead of `secrets.GITHUB_TOKEN`.|false| |`true`|
+|GITHUB_TOKEN|Access token|`${{github.token}}`|true|`${{secrets.ACCESS_TOKEN}}`|
 
 ## Action event details
 ### Target events
