@@ -24,7 +24,7 @@ GitHub actions to create project card.
   - [CHECK_USER_PROJECT](#check_user_project)
 - [Action event details](#action-event-details)
   - [Target events](#target-events)
-- [Sample GitHub Actions using this Action](#sample-github-actions-using-this-action)
+- [Example repositories using this Action](#example-repositories-using-this-action)
 - [Author](#author)
 
 </details>
