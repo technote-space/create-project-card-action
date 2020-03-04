@@ -68,23 +68,13 @@ jobs:
 ```
 
 ## Options
-### PROJECT
-Project name.  
-
-### COLUMN
-Column name.  
-
-### CHECK_ORG_PROJECT
-Whether to check org project.  
-If use this option, full access permission for `admin` is required.  
-Use personal access token instead of `secrets.GITHUB_TOKEN`.  
-default: `false`
-
-### CHECK_USER_PROJECT
-Whether to check user project.  
-If use this option, full access permission for `repo` is required.  
-Use personal access token instead of `secrets.GITHUB_TOKEN`.  
-default: `false`
+| name | description | default | required | e.g. |
+|:---:|:---|:---:|:---:|:---:|
+|PROJECT|Project name| |true|`Backlog`|
+|COLUMN|Column name| |true|`To do`|
+|CHECK_ORG_PROJECT|Whether to check org project.<br>If use this option, full access permission for `admin` is required.<br>Use personal access token instead of `secrets.GITHUB_TOKEN`.|false| |`true`|
+|CHECK_USER_PROJECT|Whether to check user project.<br>If use this option, full access permission for `repo` is required.<br>Use personal access token instead of `secrets.GITHUB_TOKEN`.|false| |`true`|
+|GITHUB_TOKEN|Access token|`${{github.token}}`|true|`${{secrets.ACCESS_TOKEN}}`|
 
 ## Action event details
 ### Target events

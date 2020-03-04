@@ -68,23 +68,13 @@ jobs:
 ```
 
 ## オプション
-### PROJECT
-プロジェクト名  
-
-### COLUMN
-カラム名  
-
-### CHECK_ORG_PROJECT
-Organizationプロジェクトをチェックするかどうか  
-このオプションを使用する場合、`admin` へのアクセス許可が必要です。  
-`secrets.GITHUB_TOKEN` の代わりに Personal access token を使用してください。  
-default: `false`
-
-### CHECK_USER_PROJECT
-Userプロジェクトをチェックするかどうか  
-このオプションを使用する場合、`repo` へのアクセス許可が必要です。  
-`secrets.GITHUB_TOKEN` の代わりに Personal access token を使用してください。  
-default: `false`
+| name | description | default | required | e.g. |
+|:---:|:---|:---:|:---:|:---:|
+|PROJECT|プロジェクト名| |true|`Backlog`|
+|COLUMN|カラム名| |true|`To do`|
+|CHECK_ORG_PROJECT|Organizationプロジェクトをチェックするかどうか<br>このオプションを使用する場合、`admin` へのアクセス許可が必要です。<br>`secrets.GITHUB_TOKEN` の代わりに Personal access token を使用してください。|false| |`true`|
+|CHECK_USER_PROJECT|Userプロジェクトをチェックするかどうか<br>このオプションを使用する場合、`repo` へのアクセス許可が必要です。<br>`secrets.GITHUB_TOKEN` の代わりに Personal access token を使用してください。|false| |`true`|
+|GITHUB_TOKEN|アクセストークン|`${{github.token}}`|true|`${{secrets.ACCESS_TOKEN}}`|
 
 ## Action イベント詳細
 ### 対象イベント
