@@ -18,13 +18,9 @@ GitHub actions to create project card.
 
 - [Usage](#usage)
 - [Options](#options)
-  - [PROJECT](#project)
-  - [COLUMN](#column)
-  - [CHECK_ORG_PROJECT](#check_org_project)
-  - [CHECK_USER_PROJECT](#check_user_project)
 - [Action event details](#action-event-details)
   - [Target events](#target-events)
-- [Sample GitHub Actions using this Action](#sample-github-actions-using-this-action)
+- [Example repositories using this Action](#example-repositories-using-this-action)
 - [Author](#author)
 
 </details>
@@ -47,10 +43,9 @@ jobs:
         with:
           PROJECT: Backlog
           COLUMN: To do
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-e.g. pr_opened.yml
+e.g. pr-opened.yml
 ```yaml
 on:
   pull_request:
@@ -66,27 +61,16 @@ jobs:
         with:
           PROJECT: Backlog
           COLUMN: To do
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Options
-### PROJECT
-Project name.  
-
-### COLUMN
-Column name.  
-
-### CHECK_ORG_PROJECT
-Whether to check org project.  
-If use this option, full access permission for `admin` is required.  
-Use personal access token instead of `secrets.GITHUB_TOKEN`.  
-default: `false`
-
-### CHECK_USER_PROJECT
-Whether to check user project.  
-If use this option, full access permission for `repo` is required.  
-Use personal access token instead of `secrets.GITHUB_TOKEN`.  
-default: `false`
+| name | description | default | required | e.g. |
+|:---:|:---|:---:|:---:|:---:|
+|PROJECT|Project name| |true|`Backlog`|
+|COLUMN|Column name| |true|`To do`|
+|CHECK_ORG_PROJECT|Whether to check org project.<br>If use this option, full access permission for `admin` is required.<br>Use personal access token instead of `secrets.GITHUB_TOKEN`.|false| |`true`|
+|CHECK_USER_PROJECT|Whether to check user project.<br>If use this option, full access permission for `repo` is required.<br>Use personal access token instead of `secrets.GITHUB_TOKEN`.|false| |`true`|
+|GITHUB_TOKEN|Access token|`${{github.token}}`|true|`${{secrets.ACCESS_TOKEN}}`|
 
 ## Action event details
 ### Target events
@@ -95,23 +79,23 @@ default: `false`
 |pull_request|opened, reopened|
 |issues|opened, reopened|
 
-## Sample GitHub Actions using this Action
+## Example repositories using this Action
 - [Release GitHub Actions](https://github.com/technote-space/release-github-actions)
-  - [pr_opened.yml](https://github.com/technote-space/release-github-actions/blob/master/.github/workflows/pr_opened.yml)
+  - [pr-opened.yml](https://github.com/technote-space/release-github-actions/blob/master/.github/workflows/pr-opened.yml)
 - [Auto card labeler](https://github.com/technote-space/auto-card-labeler)
-  - [pr_opened.yml](https://github.com/technote-space/auto-card-labeler/blob/master/.github/workflows/pr_opened.yml)
+  - [pr-opened.yml](https://github.com/technote-space/auto-card-labeler/blob/master/.github/workflows/pr-opened.yml)
 - [Assign Author](https://github.com/technote-space/assign-author)
-  - [pr_opened.yml](https://github.com/technote-space/assign-author/blob/master/.github/workflows/pr_opened.yml)
+  - [pr-opened.yml](https://github.com/technote-space/assign-author/blob/master/.github/workflows/pr-opened.yml)
 - [TOC Generator](https://github.com/technote-space/toc-generator)
-  - [pr_opened.yml](https://github.com/technote-space/toc-generator/blob/master/.github/workflows/pr_opened.yml)
+  - [pr-opened.yml](https://github.com/technote-space/toc-generator/blob/master/.github/workflows/pr-opened.yml)
 - [Package Version Check Action](https://github.com/technote-space/package-version-check-action)
-  - [pr_opened.yml](https://github.com/technote-space/package-version-check-action/blob/master/.github/workflows/pr_opened.yml)
+  - [pr-opened.yml](https://github.com/technote-space/package-version-check-action/blob/master/.github/workflows/pr-opened.yml)
 - [Get Diff Action](https://github.com/technote-space/get-diff-action)
-  - [pr_opened.yml](https://github.com/technote-space/get-diff-action/blob/master/.github/workflows/pr_opened.yml)
+  - [pr-opened.yml](https://github.com/technote-space/get-diff-action/blob/master/.github/workflows/pr-opened.yml)
 - [Create Project Card Action](https://github.com/technote-space/create-project-card-action)
-  - [pr_opened.yml](https://github.com/technote-space/create-project-card-action/blob/master/.github/workflows/pr_opened.yml)
+  - [pr-opened.yml](https://github.com/technote-space/create-project-card-action/blob/master/.github/workflows/pr-opened.yml)
 - [Get git comment action](https://github.com/technote-space/get-git-comment-action)
-  - [pr_opened.yml](https://github.com/technote-space/get-git-comment-action/blob/master/.github/workflows/pr_opened.yml)
+  - [pr-opened.yml](https://github.com/technote-space/get-git-comment-action/blob/master/.github/workflows/pr-opened.yml)
 
 ## Author
 [GitHub (Technote)](https://github.com/technote-space)  
