@@ -47,7 +47,6 @@ jobs:
         with:
           PROJECT: Backlog
           COLUMN: To do
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 e.g. pr_opened.yml
@@ -66,7 +65,6 @@ jobs:
         with:
           PROJECT: Backlog
           COLUMN: To do
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## オプション
@@ -95,7 +93,7 @@ default: `false`
 |pull_request|opened, reopened|
 |issues|opened, reopened|
 
-## このアクションを使用しているアクションの例
+## このアクションを使用しているリポジトリの例
 - [Release GitHub Actions](https://github.com/technote-space/release-github-actions)
   - [pr_opened.yml](https://github.com/technote-space/release-github-actions/blob/master/.github/workflows/pr_opened.yml)
 - [Auto card labeler](https://github.com/technote-space/auto-card-labeler)
