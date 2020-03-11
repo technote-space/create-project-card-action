@@ -1,0 +1,31 @@
+name: Create Project Card Action
+
+description: GitHub actions to create project card.
+
+author: technote-space
+
+inputs:
+  GITHUB_TOKEN:
+    description: Secret GitHub API token to use for making API requests.
+    default: ${{ github.token }}
+    required: true
+  PROJECT:
+    description: Project name.
+    required: true
+  COLUMN:
+    description: Column name.
+    required: true
+  CHECK_ORG_PROJECT:
+    description: Whether to check org project.
+    required: false
+  CHECK_USER_PROJECT:
+    description: Whether to check org project.
+    required: false
+
+branding:
+  icon: 'file-plus'
+  color: 'green'
+
+runs:
+  using: node12
+  main: lib/main.js
