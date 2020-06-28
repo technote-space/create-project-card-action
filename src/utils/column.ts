@@ -1,4 +1,4 @@
-import {Octokit} from '@octokit/rest';
+import {Octokit} from '@technote-space/github-action-helper/dist/types';
 import {Utils, Logger} from '@technote-space/github-action-helper';
 import {SLEEP} from '../constant';
 
@@ -6,7 +6,8 @@ export const getColumnIds = async(projectIds: Array<number>, columnName: string,
   const columnIds: Array<number> = [];
   for (const projectId of projectIds) {
     const columnId = (await octokit.paginate(
-      octokit.projects.listColumns.endpoint.merge({'project_id': projectId}),
+      octokit.projects.listColumns,
+      {'project_id': projectId},
     )).find(item => item.name === columnName)?.id;
     if (undefined !== columnId) {
       columnIds.push(columnId);
