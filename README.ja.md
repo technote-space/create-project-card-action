@@ -76,7 +76,7 @@ jobs:
 ### 対象イベント
 | eventName | action |
 |:---:|:---:|
-|pull_request|opened, reopened|
+|pull_request, pull_request_target|opened, reopened|
 |issues|opened, reopened|
 
 ## このアクションを使用しているリポジトリの例
