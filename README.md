@@ -76,7 +76,7 @@ jobs:
 ### Target events
 | eventName | action |
 |:---:|:---:|
-|pull_request|opened, reopened|
+|pull_request, pull_request_target|opened, reopened|
 |issues|opened, reopened|
 
 ## Example repositories using this Action
