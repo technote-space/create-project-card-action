@@ -1,6 +1,6 @@
 {
   "name": "@technote-space/create-project-card-action",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "GitHub actions to create project card.",
   "author": {
     "name": "Technote",
