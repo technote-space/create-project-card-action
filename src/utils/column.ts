@@ -7,7 +7,7 @@ export const getColumnIds = async(projectIds: Array<number>, columnName: string,
   const columnIds: Array<number> = [];
   for (const projectId of projectIds) {
     const columnId = (await octokit.paginate(
-      octokit.projects.listColumns,
+      octokit.rest.projects.listColumns,
       {'project_id': projectId},
     )).find(item => item.name === columnName)?.id;
     if (undefined !== columnId) {
