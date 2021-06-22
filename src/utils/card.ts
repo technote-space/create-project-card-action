@@ -5,7 +5,7 @@ import {SLEEP} from '../constant';
 
 const createCard = async(columnId: number, contentId: number, contentType: string, logger: Logger, octokit: Octokit): Promise<boolean> => {
   try {
-    await octokit.projects.createCard({
+    await octokit.rest.projects.createCard({
       'column_id': columnId,
       'content_id': contentId,
       'content_type': contentType,

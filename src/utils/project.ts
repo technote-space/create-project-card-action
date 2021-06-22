@@ -5,17 +5,17 @@ import {isActive} from './misc';
 
 // eslint-disable-next-line camelcase
 export const getRepoProject = async(projectName: string, logger: Logger, octokit: Octokit, context: Context): Promise<number | undefined> => context.payload.repository?.has_projects ? (await octokit.paginate(
-  octokit.projects.listForRepo,
+  octokit.rest.projects.listForRepo,
   {...context.repo, state: 'open'},
 )).find(item => item.name === projectName)?.id : undefined;
 
 export const getOrgProject = async(projectName: string, logger: Logger, octokit: Octokit, context: Context): Promise<number | undefined> => isActive('ORG') && 'organization' in context.payload ? (await octokit.paginate(
-  octokit.projects.listForOrg,
+  octokit.rest.projects.listForOrg,
   {org: context.repo.owner, state: 'open'},
 )).find(item => item.name === projectName)?.id : undefined;
 
 export const getUserProject = async(projectName: string, logger: Logger, octokit: Octokit, context: Context): Promise<number | undefined> => isActive('USER') && !('organization' in context.payload) ? (await octokit.paginate(
-  octokit.projects.listForUser,
+  octokit.rest.projects.listForUser,
   {username: context.repo.owner, state: 'open'},
 )).find(item => item.name === projectName)?.id : undefined;
 
