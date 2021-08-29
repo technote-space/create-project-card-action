@@ -10,7 +10,7 @@ const createCard = async(columnId: number, contentId: number, contentType: strin
       'content_id': contentId,
       'content_type': contentType,
     });
-  } catch (error) {
+  } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
     logger.warn(error.message);
     return false;
   } finally {
