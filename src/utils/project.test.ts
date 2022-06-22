@@ -1,14 +1,12 @@
 /* eslint-disable no-magic-numbers */
 import path from 'path';
 import { Context } from '@actions/github/lib/context';
-import { Logger } from '@technote-space/github-action-log-helper';
 import { testEnv, disableNetConnect, getApiFixture, generateContext, getOctokit } from '@technote-space/github-action-test-helper';
 import nock from 'nock';
 import { describe, expect, it } from 'vitest';
 import { getRepoProject, getOrgProject, getUserProject, getProjectIds } from './project';
 
 const fixturesDir = path.resolve(__dirname, '../fixtures');
-const logger      = new Logger();
 const octokit     = getOctokit();
 const getContext  = (payload = {}): Context => generateContext({
   event: 'pull_request',
@@ -23,11 +21,11 @@ describe('getRepoProject', () => {
   disableNetConnect(nock);
 
   it('should return undefined 1', async() => {
-    expect(await getRepoProject('Backlog', logger, octokit, getContext())).toBeUndefined();
+    expect(await getRepoProject('Backlog', octokit, getContext())).toBeUndefined();
   });
 
   it('should return undefined 2', async() => {
-    expect(await getRepoProject('Backlog', logger, octokit, getContext({
+    expect(await getRepoProject('Backlog', octokit, getContext({
       repository: { 'has_projects': false },
     }))).toBeUndefined();
   });
@@ -38,7 +36,7 @@ describe('getRepoProject', () => {
       .get('/repos/hello/world/projects?state=open')
       .reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
-    expect(await getRepoProject('abc', logger, octokit, getContext({
+    expect(await getRepoProject('abc', octokit, getContext({
       repository: { 'has_projects': true },
     }))).toBeUndefined();
   });
@@ -49,7 +47,7 @@ describe('getRepoProject', () => {
       .get('/repos/hello/world/projects?state=open')
       .reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
-    expect(await getRepoProject('Backlog', logger, octokit, getContext({
+    expect(await getRepoProject('Backlog', octokit, getContext({
       repository: { 'has_projects': true },
     }))).toBe(234);
   });
@@ -60,12 +58,12 @@ describe('getOrgProject', () => {
   disableNetConnect(nock);
 
   it('should return undefined 1', async() => {
-    expect(await getOrgProject('Backlog', logger, octokit, getContext())).toBeUndefined();
+    expect(await getOrgProject('Backlog', octokit, getContext())).toBeUndefined();
   });
 
   it('should return undefined 2', async() => {
     process.env.INPUT_CHECK_ORG_PROJECT = 'true';
-    expect(await getOrgProject('Backlog', logger, octokit, getContext())).toBeUndefined();
+    expect(await getOrgProject('Backlog', octokit, getContext())).toBeUndefined();
   });
 
   it('should return undefined 3', async() => {
@@ -75,7 +73,7 @@ describe('getOrgProject', () => {
       .get('/orgs/hello/projects?state=open')
       .reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
-    expect(await getOrgProject('abc', logger, octokit, getContext({
+    expect(await getOrgProject('abc', octokit, getContext({
       organization: {},
     }))).toBeUndefined();
   });
@@ -87,7 +85,7 @@ describe('getOrgProject', () => {
       .get('/orgs/hello/projects?state=open')
       .reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
-    expect(await getOrgProject('Backlog', logger, octokit, getContext({
+    expect(await getOrgProject('Backlog', octokit, getContext({
       organization: {},
     }))).toBe(234);
   });
@@ -98,12 +96,12 @@ describe('getUserProject', () => {
   disableNetConnect(nock);
 
   it('should return undefined 1', async() => {
-    expect(await getUserProject('Backlog', logger, octokit, getContext())).toBeUndefined();
+    expect(await getUserProject('Backlog', octokit, getContext())).toBeUndefined();
   });
 
   it('should return undefined 2', async() => {
     process.env.INPUT_CHECK_USER_PROJECT = 'true';
-    expect(await getUserProject('Backlog', logger, octokit, getContext({
+    expect(await getUserProject('Backlog', octokit, getContext({
       organization: {},
     }))).toBeUndefined();
   });
@@ -115,7 +113,7 @@ describe('getUserProject', () => {
       .get('/users/hello/projects?state=open')
       .reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
-    expect(await getUserProject('abc', logger, octokit, getContext())).toBeUndefined();
+    expect(await getUserProject('abc', octokit, getContext())).toBeUndefined();
   });
 
   it('should return user project', async() => {
@@ -125,7 +123,7 @@ describe('getUserProject', () => {
       .get('/users/hello/projects?state=open')
       .reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
-    expect(await getUserProject('Backlog', logger, octokit, getContext())).toBe(234);
+    expect(await getUserProject('Backlog', octokit, getContext())).toBe(234);
   });
 });
 
@@ -140,7 +138,7 @@ describe('getProjectIds', () => {
       .get('/orgs/hello/projects?state=open')
       .reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
-    expect(await getProjectIds('Backlog', logger, octokit, getContext({
+    expect(await getProjectIds('Backlog', octokit, getContext({
       organization: {},
     }))).toEqual([234]);
   });

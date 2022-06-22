@@ -13,7 +13,7 @@ export const execute = async(logger: Logger, octokit: Octokit, context: Context)
   logger.startProcess('project: %s, column: %s', projectName, columnName);
 
   logger.startProcess('Getting target projects...');
-  const projectIds = await getProjectIds(projectName, logger, octokit, context);
+  const projectIds = await getProjectIds(projectName, octokit, context);
   if (projectIds.length) {
     console.log(projectIds);
   } else {
@@ -22,7 +22,7 @@ export const execute = async(logger: Logger, octokit: Octokit, context: Context)
   }
 
   logger.startProcess('Getting target columns...');
-  const columnIds = await getColumnIds(projectIds, columnName, logger, octokit);
+  const columnIds = await getColumnIds(projectIds, columnName, octokit);
   if (columnIds.length) {
     console.log(columnIds);
   } else {

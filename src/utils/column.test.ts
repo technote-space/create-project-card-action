@@ -1,13 +1,11 @@
 /* eslint-disable no-magic-numbers */
 import path from 'path';
-import { Logger } from '@technote-space/github-action-log-helper';
 import { disableNetConnect, getApiFixture, getOctokit } from '@technote-space/github-action-test-helper';
 import nock from 'nock';
 import { describe, expect, it } from 'vitest';
 import { getColumnIds } from './column';
 
 const fixturesDir = path.resolve(__dirname, '../fixtures');
-const logger      = new Logger();
 const octokit     = getOctokit();
 
 describe('getColumnIds', () => {
@@ -23,6 +21,6 @@ describe('getColumnIds', () => {
       .get('/projects/3/columns')
       .reply(200, () => []);
 
-    expect(await getColumnIds([1, 2, 3], 'To do', logger, octokit)).toEqual([456]);
+    expect(await getColumnIds([1, 2, 3], 'To do', octokit)).toEqual([456]);
   });
 });

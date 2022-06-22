@@ -1,9 +1,8 @@
 import type { Octokit } from '@technote-space/github-action-helper/dist/types';
-import type { Logger } from '@technote-space/github-action-log-helper';
 import { Utils } from '@technote-space/github-action-helper';
 import { SLEEP } from '../constant';
 
-export const getColumnIds = async(projectIds: Array<number>, columnName: string, logger: Logger, octokit: Octokit): Promise<Array<number>> => {
+export const getColumnIds = async(projectIds: Array<number>, columnName: string, octokit: Octokit): Promise<Array<number>> => {
   const columnIds: Array<number> = [];
   for (const projectId of projectIds) {
     const columnId = (await octokit.paginate(
