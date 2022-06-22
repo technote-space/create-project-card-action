@@ -1,4 +1,5 @@
 /* eslint-disable no-magic-numbers */
+import { describe, expect, it } from 'vitest';
 import nock from 'nock';
 import {disableNetConnect, getOctokit, spyOnStdout, stdoutCalledWith} from '@technote-space/github-action-test-helper';
 import {Logger} from '@technote-space/github-action-log-helper';

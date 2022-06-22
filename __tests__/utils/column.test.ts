@@ -1,4 +1,5 @@
 /* eslint-disable no-magic-numbers */
+import { describe, expect, it } from 'vitest';
 import nock from 'nock';
 import path from 'path';
 import {disableNetConnect, getApiFixture, getOctokit} from '@technote-space/github-action-test-helper';

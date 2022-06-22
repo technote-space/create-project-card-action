@@ -1,4 +1,5 @@
 /* eslint-disable no-magic-numbers */
+import { describe, expect, it } from 'vitest';
 import path from 'path';
 import {testEnv} from '@technote-space/github-action-test-helper';
 import {getProjectName, getColumnName, isActive} from '../../src/utils/misc';
