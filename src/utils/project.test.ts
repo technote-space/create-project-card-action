@@ -1,10 +1,10 @@
 /* eslint-disable no-magic-numbers */
-import { describe, expect, it } from 'vitest';
-import nock from 'nock';
 import path from 'path';
 import { Context } from '@actions/github/lib/context';
-import { testEnv, disableNetConnect, getApiFixture, generateContext, getOctokit } from '@technote-space/github-action-test-helper';
 import { Logger } from '@technote-space/github-action-log-helper';
+import { testEnv, disableNetConnect, getApiFixture, generateContext, getOctokit } from '@technote-space/github-action-test-helper';
+import nock from 'nock';
+import { describe, expect, it } from 'vitest';
 import { getRepoProject, getOrgProject, getUserProject, getProjectIds } from './project';
 
 const fixturesDir = path.resolve(__dirname, '../fixtures');

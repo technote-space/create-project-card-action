@@ -1,9 +1,9 @@
 /* eslint-disable no-magic-numbers */
-import { describe, expect, it } from 'vitest';
-import nock from 'nock';
 import path from 'path';
-import { disableNetConnect, getApiFixture, getOctokit } from '@technote-space/github-action-test-helper';
 import { Logger } from '@technote-space/github-action-log-helper';
+import { disableNetConnect, getApiFixture, getOctokit } from '@technote-space/github-action-test-helper';
+import nock from 'nock';
+import { describe, expect, it } from 'vitest';
 import { getColumnIds } from './column';
 
 const fixturesDir = path.resolve(__dirname, '../fixtures');
