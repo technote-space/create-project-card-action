@@ -1,6 +1,6 @@
-import { Octokit } from '@technote-space/github-action-helper/dist/types';
+import type { Octokit } from '@technote-space/github-action-helper/dist/types';
 import { Utils } from '@technote-space/github-action-helper';
-import { Logger } from '@technote-space/github-action-log-helper';
+import type { Logger } from '@technote-space/github-action-log-helper';
 import { SLEEP } from '../constant';
 
 const createCard = async(columnId: number, contentId: number, contentType: string, logger: Logger, octokit: Octokit): Promise<boolean> => {

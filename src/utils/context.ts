@@ -1,4 +1,4 @@
-import { Context } from '@actions/github/lib/context';
+import type { Context } from '@actions/github/lib/context';
 import { ContextHelper } from '@technote-space/github-action-helper';
 
 // eslint-disable-next-line no-magic-numbers
