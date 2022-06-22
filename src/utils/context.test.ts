@@ -1,8 +1,8 @@
 /* eslint-disable no-magic-numbers */
 import { describe, expect, it } from 'vitest';
-import {Context} from '@actions/github/lib/context';
-import {generateContext} from '@technote-space/github-action-test-helper';
-import {getContentId, getContentType} from '../../src/utils/context';
+import { Context } from '@actions/github/lib/context';
+import { generateContext } from '@technote-space/github-action-test-helper';
+import { getContentId, getContentType } from './context';
 
 const getContext = (event: string, payload = {}): Context => generateContext({
   event,

@@ -2,10 +2,10 @@
 import { describe, expect, it } from 'vitest';
 import nock from 'nock';
 import path from 'path';
-import {Context} from '@actions/github/lib/context';
-import {testEnv, disableNetConnect, getApiFixture, generateContext, getOctokit} from '@technote-space/github-action-test-helper';
-import {Logger} from '@technote-space/github-action-log-helper';
-import {getRepoProject, getOrgProject, getUserProject, getProjectIds} from '../../src/utils/project';
+import { Context } from '@actions/github/lib/context';
+import { testEnv, disableNetConnect, getApiFixture, generateContext, getOctokit } from '@technote-space/github-action-test-helper';
+import { Logger } from '@technote-space/github-action-log-helper';
+import { getRepoProject, getOrgProject, getUserProject, getProjectIds } from './project';
 
 const fixturesDir = path.resolve(__dirname, '../fixtures');
 const logger      = new Logger();
@@ -28,7 +28,7 @@ describe('getRepoProject', () => {
 
   it('should return undefined 2', async() => {
     expect(await getRepoProject('Backlog', logger, octokit, getContext({
-      repository: {'has_projects': false},
+      repository: { 'has_projects': false },
     }))).toBeUndefined();
   });
 
@@ -39,7 +39,7 @@ describe('getRepoProject', () => {
       .reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
     expect(await getRepoProject('abc', logger, octokit, getContext({
-      repository: {'has_projects': true},
+      repository: { 'has_projects': true },
     }))).toBeUndefined();
   });
 
@@ -50,7 +50,7 @@ describe('getRepoProject', () => {
       .reply(200, getApiFixture(fixturesDir, 'repos.projects'));
 
     expect(await getRepoProject('Backlog', logger, octokit, getContext({
-      repository: {'has_projects': true},
+      repository: { 'has_projects': true },
     }))).toBe(234);
   });
 });
