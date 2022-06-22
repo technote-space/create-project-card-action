@@ -1,10 +1,11 @@
 /* eslint-disable no-magic-numbers */
-import nock from 'nock';
 import path from 'path';
-import {Context} from '@actions/github/lib/context';
-import {testEnv, disableNetConnect, getApiFixture, generateContext, getOctokit} from '@technote-space/github-action-test-helper';
-import {Logger} from '@technote-space/github-action-log-helper';
-import {execute} from '../src/process';
+import { Context } from '@actions/github/lib/context';
+import { Logger } from '@technote-space/github-action-log-helper';
+import { testEnv, disableNetConnect, getApiFixture, generateContext, getOctokit } from '@technote-space/github-action-test-helper';
+import nock from 'nock';
+import { describe, expect, it } from 'vitest';
+import { execute } from './process';
 
 const rootDir     = path.resolve(__dirname, '..');
 const fixturesDir = path.resolve(__dirname, 'fixtures');
@@ -40,7 +41,7 @@ describe('execute', () => {
       .reply(200, () => []);
 
     expect(await execute(logger, octokit, getContext({
-      repository: {'has_projects': true},
+      repository: { 'has_projects': true },
     }))).toBe(false);
   });
 
@@ -57,7 +58,7 @@ describe('execute', () => {
       .reply(201);
 
     expect(await execute(logger, octokit, getContext({
-      repository: {'has_projects': true},
+      repository: { 'has_projects': true },
     }))).toBe(true);
   });
 });

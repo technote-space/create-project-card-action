@@ -1,11 +1,11 @@
-import {Context} from '@actions/github/lib/context';
-import {Octokit} from '@technote-space/github-action-helper/dist/types';
-import {Logger} from '@technote-space/github-action-log-helper';
-import {getProjectName, getColumnName} from './utils/misc';
-import {getProjectIds} from './utils/project';
-import {getColumnIds} from './utils/column';
-import {getContentId, getContentType} from './utils/context';
-import {createCards} from './utils/card';
+import type { Context } from '@actions/github/lib/context';
+import type { Octokit } from '@technote-space/github-action-helper/dist/types';
+import type { Logger } from '@technote-space/github-action-log-helper';
+import { createCards } from './utils/card';
+import { getColumnIds } from './utils/column';
+import { getContentId, getContentType } from './utils/context';
+import { getProjectName, getColumnName } from './utils/misc';
+import { getProjectIds } from './utils/project';
 
 export const execute = async(logger: Logger, octokit: Octokit, context: Context): Promise<boolean> => {
   const projectName = getProjectName();
@@ -13,7 +13,7 @@ export const execute = async(logger: Logger, octokit: Octokit, context: Context)
   logger.startProcess('project: %s, column: %s', projectName, columnName);
 
   logger.startProcess('Getting target projects...');
-  const projectIds = await getProjectIds(projectName, logger, octokit, context);
+  const projectIds = await getProjectIds(projectName, octokit, context);
   if (projectIds.length) {
     console.log(projectIds);
   } else {
@@ -22,7 +22,7 @@ export const execute = async(logger: Logger, octokit: Octokit, context: Context)
   }
 
   logger.startProcess('Getting target columns...');
-  const columnIds = await getColumnIds(projectIds, columnName, logger, octokit);
+  const columnIds = await getColumnIds(projectIds, columnName, octokit);
   if (columnIds.length) {
     console.log(columnIds);
   } else {

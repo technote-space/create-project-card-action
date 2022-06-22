@@ -1,8 +1,9 @@
 /* eslint-disable no-magic-numbers */
+import { Logger } from '@technote-space/github-action-log-helper';
+import { disableNetConnect, getOctokit, spyOnStdout, stdoutCalledWith } from '@technote-space/github-action-test-helper';
 import nock from 'nock';
-import {disableNetConnect, getOctokit, spyOnStdout, stdoutCalledWith} from '@technote-space/github-action-test-helper';
-import {Logger} from '@technote-space/github-action-log-helper';
-import {createCards} from '../../src/utils/card';
+import { describe, expect, it } from 'vitest';
+import { createCards } from './card';
 
 const logger  = new Logger();
 const octokit = getOctokit();

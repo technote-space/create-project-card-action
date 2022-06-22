@@ -1,7 +1,8 @@
 /* eslint-disable no-magic-numbers */
 import path from 'path';
-import {testEnv} from '@technote-space/github-action-test-helper';
-import {getProjectName, getColumnName, isActive} from '../../src/utils/misc';
+import { testEnv } from '@technote-space/github-action-test-helper';
+import { describe, expect, it } from 'vitest';
+import { getProjectName, getColumnName, isActive } from './misc';
 
 const rootDir = path.resolve(__dirname, '../..');
 
